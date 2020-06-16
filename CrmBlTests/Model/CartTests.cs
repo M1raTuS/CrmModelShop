@@ -21,6 +21,7 @@ namespace CrmBl.Model.Tests
                 CustomerId = 1,
                 Name = "testuser"
             };
+
             var product1 = new Product()
             {
                 ProductId = 1,
@@ -28,6 +29,7 @@ namespace CrmBl.Model.Tests
                 Price = 1000,
                 Count = 50
             };
+
             var product2 = new Product()
             {
                 ProductId = 2,
