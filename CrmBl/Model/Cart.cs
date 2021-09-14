@@ -11,7 +11,7 @@ namespace CrmBl.Model
         public Cart(Customer customer)
         {
             Customer = customer;
-            Products = new Dictionary<Product,int>();
+            Products = new Dictionary<Product, int>();
         }
 
         public void Add(Product product)
