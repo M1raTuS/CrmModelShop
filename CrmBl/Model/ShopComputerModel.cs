@@ -18,6 +18,8 @@ namespace CrmBl.Model
         public List<Check> Checks { get; set; } = new List<Check>();
         public List<Sell> Sells { get; set; } = new List<Sell>();
         public Queue<Seller> Sellers { get; set; } = new Queue<Seller>();
+        public int CustomerSpeed { get; set; } = 100;
+        public int CashDeskSpeed { get; set; } = 100;
 
         public ShopComputerModel()
         {
@@ -40,9 +42,9 @@ namespace CrmBl.Model
         {
             isWorking = true;
 
-            Task.Run(() => CreateCarts(10, 1000));
+            Task.Run(() => CreateCarts(10, CustomerSpeed));
 
-            var CashDeskTasks = CashDesks.Select(c => new Task(() => CashDeskWork(c, 1000)));
+            var CashDeskTasks = CashDesks.Select(c => new Task(() => CashDeskWork(c, CashDeskSpeed)));
             foreach (var task in CashDeskTasks)
             {
                 task.Start();
@@ -81,12 +83,11 @@ namespace CrmBl.Model
                         cart.Add(product);
                     }
 
-                    var cash = CashDesks[rnd.Next(CashDesks.Count - 1)];
+                    var cash = CashDesks[rnd.Next(CashDesks.Count)];
                     cash.Enqueue(cart);
                 }
 
                 Thread.Sleep(sleep);
-
             }
         }
     }
