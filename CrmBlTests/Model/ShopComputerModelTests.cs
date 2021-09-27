@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
 
 namespace CrmBl.Model.Tests
 {
@@ -10,6 +11,7 @@ namespace CrmBl.Model.Tests
         {
             var model = new ShopComputerModel();
             model.Start();
+            Thread.Sleep(10000);
         }
     }
 }
