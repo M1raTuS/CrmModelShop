@@ -9,9 +9,10 @@ namespace CrmBl.Model
         public decimal Price { get; set; }
         public int Count { get; set; }   //TODO: Check negative count
         public virtual ICollection<Sell> Sells { get; set; }
+
         public override string ToString()
         {
-            return Name;
+            return $"{Name}  -  {Price}";
         }
         public override int GetHashCode()
         {
